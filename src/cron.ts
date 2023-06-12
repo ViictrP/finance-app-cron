@@ -1,4 +1,15 @@
 import cron from 'node-cron';
-cron.schedule('* * * * *', () =>
-  console.log('Executando a tarefa a cada 1 minuto')
-);
+import { login } from './service/auth.service';
+
+function runCron() {
+  cron.schedule('* * * * *', () =>
+    console.log('[Cron] task executed.'),
+  );
+}
+
+console.log('[Cron] logging in');
+login().then(() => {
+  console.log('[Cron] successfully logged in, scheduling the task.');
+  console.log('[Cron] task will be executed every (1) minutes.');
+  runCron();
+});

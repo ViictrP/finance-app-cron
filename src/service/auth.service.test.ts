@@ -14,7 +14,7 @@ jest.mock('axios', () => ({
 }));
 
 describe('AuthService', () => {
-  afterAll(() => jest.resetAllMocks());
+  afterEach(() => jest.resetAllMocks());
 
   it('Should log in with success', async () => {
     await login();

@@ -1,5 +1,7 @@
 import BalanceDto from '../dto/balance.dto';
+import { api } from '../lib/api';
 
-export const getProfile = async (): Promise<BalanceDto> => {
-  return null as any;
+export const getBalance = async (): Promise<BalanceDto> => {
+  const { data: balance } = await api.get<BalanceDto>('/balance');
+  return balance;
 };

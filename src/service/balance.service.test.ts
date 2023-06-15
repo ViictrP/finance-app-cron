@@ -2,17 +2,17 @@ jest.mock('axios', () => ({
   create: jest.fn(() => ({
     get: () => Promise.resolve({
       data: {
-        creditCards: [],
-        transactions: [],
-        recurringExpenses: [],
+        salary: 1000,
+        expenses: 200,
+        available: 800,
       },
     }),
   })),
   get: () => Promise.resolve({
     data: {
-      creditCards: [],
-      transactions: [],
-      recurringExpenses: [],
+      salary: 1000,
+      expenses: 200,
+      available: 800,
     },
   }),
   defaults: {
@@ -28,8 +28,8 @@ describe('BalanceService', () => {
 
   it('Should get balance with success', async () => {
     const balance = await getBalance(null, null);
-    expect(balance.creditCards).toBeTruthy();
-    expect(balance.transactions).toBeTruthy();
-    expect(balance.recurringExpenses).toBeTruthy();
+    expect(balance.available).toBeTruthy();
+    expect(balance.expenses).toBeTruthy();
+    expect(balance.salary).toBeTruthy();
   });
 });

@@ -5,27 +5,20 @@ import MonthClosureDto from '../dto/month-closure.dto';
 import { pt } from 'date-fns/locale';
 import axios from 'axios';
 
-type CreditCardsTotal = { [key: string]: number };
-
 export const saveMonthClosure = async (): Promise<MonthClosureDto> => {
   const date = new Date();
   const month = format(date, 'MMM', { locale: pt }).toUpperCase();
   const year = date.getFullYear();
-  const balance = await getBalance(month, year);
-  const creditCardsAmount = 0;
-  const transactionsAmount = 0;
-  const recurringExpensesAmount = 0;
+  const { salary, expenses, available } = await getBalance(month, year);
   const payload: MonthClosureDto = {
-    available: 16000,
-    expenses: creditCardsAmount + transactionsAmount + recurringExpensesAmount,
-    total: 25000,
+    available,
+    expenses,
+    total: salary,
     month,
     year,
   };
-  const { data: monthClosure } = await api.post<MonthClosureDto>('/month-closure', payload, {
+  const { data: monthClosure } = await api.post<MonthClosureDto>('/month-closures', payload, {
     headers: axios.defaults.headers.common,
   });
   return monthClosure;
 };
-
-const doSum = (sum: number, current: number | string): number => sum + Number(current);

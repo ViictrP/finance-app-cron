@@ -1,6 +1,6 @@
 jest.mock('axios', () => ({
-  create: jest.fn(() => ({ post: () => Promise.resolve({ data: {} }) })),
-  post: () => Promise.resolve({ data: {} }),
+  create: jest.fn(() => ({ post: () => Promise.resolve({ data: { id: 'id'} }) })),
+  post: () => Promise.resolve({ data: { id: 'id'} }),
   defaults: {
     headers: {
       common: {},
@@ -18,9 +18,10 @@ describe('MonthClosureService', () => {
 
   it('Should save month closure with success', async () => {
     jest.spyOn(balanceService, 'getBalance').mockImplementation(() => Promise.resolve({
-      creditCards: [],
-      transactions: [],
-      recurringExpenses: [],
+      salary: 1000,
+      expenses: 200,
+      available: 800,
+      creditCardExpenses: {}
     }));
 
     const monthClosure = await saveMonthClosure();

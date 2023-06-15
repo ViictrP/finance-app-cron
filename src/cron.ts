@@ -4,7 +4,8 @@ import { saveMonthClosure } from './service/month-closure.service';
 
 function runCron() {
   cron.schedule('* * * * *', () => {
-    saveMonthClosure().then(() => console.log('[Cron] task executed.'));
+    saveMonthClosure().then(monthClosure =>
+      console.log(`[Cron] task executed. Month Closure ${monthClosure.month}/${monthClosure.year} [id]: ${monthClosure.id} created`));
   });
 }
 

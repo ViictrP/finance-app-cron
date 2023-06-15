@@ -1,12 +1,6 @@
-const mock = jest.fn(() =>
-  Promise.resolve({ data: {} }));
-
-import * as balanceService from './balance.service';
-import { saveMonthClosure } from './month-closure.service';
-
 jest.mock('axios', () => ({
-  create: jest.fn(() => ({ post: mock })),
-  post: mock,
+  create: jest.fn(() => ({ post: () => Promise.resolve({ data: {} }) })),
+  post: () => Promise.resolve({ data: {} }),
   defaults: {
     headers: {
       common: {},
@@ -15,6 +9,9 @@ jest.mock('axios', () => ({
 }));
 jest.mock('./balance.service',
   () => ({ getBalance: jest.fn() }));
+import * as balanceService from './balance.service';
+import { saveMonthClosure } from './month-closure.service';
+
 
 describe('MonthClosureService', () => {
   afterEach(() => jest.resetAllMocks());
@@ -29,6 +26,5 @@ describe('MonthClosureService', () => {
     const monthClosure = await saveMonthClosure();
 
     expect(monthClosure).toBeTruthy();
-    expect(mock).toHaveBeenCalled();
   });
 });

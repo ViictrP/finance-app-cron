@@ -1,10 +1,11 @@
 import cron from 'node-cron';
 import { login } from './service/auth.service';
+import { saveMonthClosure } from './service/month-closure.service';
 
 function runCron() {
-  cron.schedule('* * * * *', () =>
-    console.log('[Cron] task executed.'),
-  );
+  cron.schedule('* * * * *', () => {
+    saveMonthClosure().then(() => console.log('[Cron] task executed.'));
+  });
 }
 
 console.log('[Cron] logging in');

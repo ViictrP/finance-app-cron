@@ -1,11 +1,10 @@
-import * as cron from 'node-cron';
 jest.mock('node-cron', () => ({
   schedule: jest.fn(),
 }));
-
 jest.mock('./service/auth.service', () => ({
   login: async () =>  {}
 }));
+import * as cron from 'node-cron';
 
 describe('Cron', () => {
   it('Should schedule a cron', async () => {

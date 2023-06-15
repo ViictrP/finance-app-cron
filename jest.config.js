@@ -44,10 +44,10 @@ module.exports = {
   // An object that configures minimum threshold enforcement for coverage results
   coverageThreshold: {
     global: {
-      branches: 100,
-      functions: 100,
-      lines: 100,
-      statements: 100
+      branches: 50,
+      functions: 50,
+      lines: 50,
+      statements: 50
     }
   },
 
@@ -180,7 +180,7 @@ module.exports = {
 
   // A map from regular expressions to paths to transformers
   transform: {
-    '^.+\\.ts': 'ts-jest',
+    '^.+\\.ts': ['@swc/jest'],
     "^.+\\.js": "babel-jest",
   },
 

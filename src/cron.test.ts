@@ -17,7 +17,7 @@ describe('Cron', () => {
     await new Promise((r) => setTimeout(r, 1000));
     const scheduleSpy = jest.spyOn(cron, 'schedule');
     const saveMonthClosureSpy = jest.spyOn(monthClosureService, 'saveMonthClosure');
-    expect(scheduleSpy).toHaveBeenCalledWith('* * * * *', expect.any(Function));
+    expect(scheduleSpy).toHaveBeenCalledWith('0 2 30 * *', expect.any(Function));
     expect(saveMonthClosureSpy).toHaveBeenCalled();
   });
 });

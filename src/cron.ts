@@ -12,6 +12,6 @@ function runCron() {
 console.log('[Cron] logging in');
 login().then(() => {
   console.log('[Cron] successfully logged in, scheduling the task.');
-  console.log('[Cron] task will be executed every (1) minutes.');
+  console.log('[Cron] task will be executed every 30th of each month at 2h00 AM.');
   runCron();
 });

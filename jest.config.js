@@ -11,7 +11,7 @@ module.exports = {
   // bail: 0,
 
   // The directory where Jest should store its cached dependency information
-  // cacheDirectory: "/private/var/folders/18/ljm9p09507d6tzyjvsvp2zqh0000gn/T/jest_dx",
+  // cacheDirectory: "/private/var/folders/18/ljm9p091007d6tzyjvsvp2zqh0000gn/T/jest_dx",
 
   // Automatically clear mock calls, instances, contexts and results before every test
   clearMocks: true,
@@ -75,7 +75,7 @@ module.exports = {
   // globals: {},
 
   // The maximum amount of workers used to run your tests. Can be specified as % or a number. E.g. maxWorkers: 10% will use 10% of your CPU amount + 1 as the maximum worker number. maxWorkers: 2 will use a maximum of 2 workers.
-  // maxWorkers: "50%",
+  // maxWorkers: "100%",
 
   // An array of directory names to be searched recursively up from the requiring module's location
   // moduleDirectories: [
@@ -180,7 +180,7 @@ module.exports = {
 
   // A map from regular expressions to paths to transformers
   transform: {
-    '^.+\\.ts': 'ts-jest',
+    '^.+\\.ts': ['@swc/jest'],
     "^.+\\.js": "babel-jest",
   },
 

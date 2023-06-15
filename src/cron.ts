@@ -3,7 +3,7 @@ import { login } from './service/auth.service';
 import { saveMonthClosure } from './service/month-closure.service';
 
 function runCron() {
-  cron.schedule('* * * * *', () => {
+  cron.schedule('0 2 30 * *', () => {
     saveMonthClosure().then(monthClosure =>
       console.log(`[Cron] task executed. Month Closure ${monthClosure.month}/${monthClosure.year} [id]: ${monthClosure.id} created`));
   });
